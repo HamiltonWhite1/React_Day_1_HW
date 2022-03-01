@@ -1,9 +1,8 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-export default class Inbox extends Component {
-  render() {
+export const Inbox = () => {
     return (
       <div>Inbox</div>
     )
   }
-}
+

@@ -1,12 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Route, Routes, Link } from 'react-router-dom'
-import Inbox from './view/Inbox'
-import Sent from './view/Sent'
-import Trash from './view/Trash'
+import {Inbox} from './view/Inbox'
+import {Sent} from './view/Sent'
+import {Trash} from './view/Trash'
 
-export default class App extends Component {
-
-  render() {
+export const App = () => {
     return (
       <React.Fragment>
         <header>
@@ -51,4 +49,3 @@ export default class App extends Component {
     )
   }
 
-}
