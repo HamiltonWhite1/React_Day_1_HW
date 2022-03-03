@@ -3,9 +3,12 @@ import { Route, Routes, Link } from 'react-router-dom'
 import {Inbox} from './view/Inbox'
 import {Sent} from './view/Sent'
 import {Trash} from './view/Trash'
+import { AuthContext, useAuth } from './contexts/AuthProvider'
 
 export const App = () => {
-    return (
+  const { signIn, currentUser, logOut } = useAuth()
+
+  return (
       <React.Fragment>
         <header>
           <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
@@ -26,10 +29,24 @@ export const App = () => {
                   <Link className="nav-link" to="/trash">Trash</Link>
                 </li>
               </ul>
-              <form className="form-inline my-2 my-lg-0">
-                <input className="form-control mr-sm-2" type="text" placeholder="Search"/>
-                <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-              </form>
+              <ul>
+                {
+                  !currentUser.loggedIn
+                  ?
+                  <li className="nav-item">
+                  <Link onClick={ () => signIn() } className="nav-link" to="." >Log In</Link>
+                  </li>
+                  :
+                  <li className='nav-item'>
+                  <Link onClick={ () => logOut() } className="nav-link" to=".">Log Out</Link>
+                  </li>
+                }
+
+
+              </ul>
+
+
+                
             </div>
           </nav>
         </header>
