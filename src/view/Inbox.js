@@ -1,24 +1,18 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
-import { DataContext } from "./contexts/DataProvider"
-import { firebaseApp } from './firebase/config';
-// import moment from 'moment'
+import { DataContext } from "../contexts/DataProvider"
+import { firebaseApp } from '../firebase/config';
+import moment from 'moment'
 
 
 export const Inbox = ( props ) => {
 
-  // const { messages } = useContext( DataContext )
-  const getMessages = firebaseApp.firestore().collection('user')
-  getMessages.onSnapshot((querySnapshot) => {
-    const saveMessages = [];
-    querySnapshot.forEach((doc) => {
-      saveMessages.push(doc.data());
-    })
-  })
+  const p = props.user
+  const { messages } = useContext( DataContext )
 
   return (
       <React.Fragment>
-          {/* { messages } */}
+          { messages.map(p) }
       </React.Fragment>
   )
 }
